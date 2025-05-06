@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: zep-api
+    env: docker
+    repo: https://github.com/yngeddy/zep
+    plan: starter
+    dockerfilePath: Dockerfile.ce
+    autoDeploy: false
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ZEP_AUTH_REQUIRED
+        value: true
+      - key: ZEP_AUTH_SECRET
+        sync: false
+
+  - type: worker
+    name: zep-nlp
+    env: docker
+    dockerfilePath: Dockerfile.ce
+    repo: https://github.com/yngeddy/zep
+    plan: starter
+    autoDeploy: false
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+
+databases:
+  - name: zep-postgres
+    databaseName: postgres
+    user: postgres
