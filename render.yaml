@@ -27,5 +27,5 @@ services:
 
 databases:
   - name: zep-postgres
-    databaseName: postgres
-    user: postgres
+    databaseName: zepdb
+    user: zepuser
